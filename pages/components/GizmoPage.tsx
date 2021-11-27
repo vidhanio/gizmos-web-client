@@ -1,19 +1,19 @@
 import Image from "next/image";
+import ErrorPage from "next/error";
 
-function Gizmo({ gizmo }: { gizmo: IGizmo | undefined }) {
+function Gizmo({ gizmo }: { gizmo: IGizmo }) {
   return gizmo ? (
-    <div className="flex flex-col gap-4 justify-center items-center p-16 m-16 text-black bg-green-200 rounded-lg shadow-2xl">
+    <div className="flex flex-col gap-8 justify-center items-center p-16 w-screen h-screen">
       <h3 className="text-2xl text-center">{gizmo.title}</h3>
       <p className="text-base text-center">{gizmo.description}</p>
-      <div className="relative w-96 h-96">
-        <Image
-          className="rounded-lg shadow-md"
-          src={`https://el-gizmos.s3.amazonaws.com/img/GizmoSnap/${gizmo.resource}DET.jpg`}
-          alt="Gizmo"
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
+      <Image
+        className="rounded-lg"
+        src={`https://el-gizmos.s3.amazonaws.com/img/GizmoSnap/${gizmo.resource}DET.jpg`}
+        alt="Gizmo"
+        layout="intrinsic"
+        width={512}
+        height={340}
+      />
       <div className="flex flex-row gap-4">
         <span>
           <strong>1.</strong> {gizmo.answers[0]}
@@ -33,7 +33,7 @@ function Gizmo({ gizmo }: { gizmo: IGizmo | undefined }) {
       </div>
     </div>
   ) : (
-    <div className="flex-col justify-center items-center shadow-lg rounded-white"></div>
+    <ErrorPage statusCode={404} />
   );
 }
 

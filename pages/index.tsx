@@ -1,21 +1,25 @@
-import GizmoCard from "./components/GizmoCard";
+import GizmoItem from "./components/GizmoItem";
 import { useEffect, useState } from "react";
 import { getGizmo, getGizmos, addGizmo, updateGizmo, deleteGizmo } from "./API";
 
 function App() {
-  const [gizmo, setGizmo] = useState<IGizmo | undefined>(undefined);
+  const [gizmos, setGizmos] = useState<IGizmo[]>([]);
 
   useEffect(() => {
-    handleGetGizmo(1200);
+    async function fetchGizmos() {
+      const { data } = await getGizmos();
+      setGizmos(data.gizmos);
+    }
+    fetchGizmos();
   }, []);
 
-  async function handleGetGizmo(resource: number) {
-    await getGizmo(resource)
+  async function handleGetGizmos() {
+    await getGizmos()
       .then(({ status, data }) => {
         if (status !== 200) {
-          throw new Error("Error! Gizmo not deleted");
+          throw new Error("Error! Gizmos could not be retrieved.");
         } else {
-          setGizmo(data.gizmo);
+          setGizmos(data.gizmos);
         }
       })
       .catch((err) => console.log(err));
@@ -57,8 +61,10 @@ function App() {
   };*/
 
   return (
-    <div className="h-full App">
-      <GizmoCard gizmo={gizmo} />
+    <div className="flex flex-col gap-16 p-16 App">
+      {gizmos.map((gizmo: IGizmo) => (
+        <GizmoItem key={gizmo.resource} gizmo={gizmo} />
+      ))}
     </div>
   );
 }

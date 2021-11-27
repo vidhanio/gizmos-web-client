@@ -11,9 +11,14 @@ type GizmoProps = {
   gizmo: IGizmo;
 };
 
-type ApiDataType = {
+type GizmoResponse = {
   message: string;
   status: string;
-  gizmos?: IGizmo[];
-  gizmo?: IGizmo;
+  gizmo: IGizmo;
+};
+
+type GizmosResponse = {
+  message: string;
+  status: string;
+  gizmos: IGizmo[];
 };
