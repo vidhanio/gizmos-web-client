@@ -1,8 +1,9 @@
 {
   "name": "gizmos-answer-client",
+  "version": "0.0.1",
+  "repository": "https://github.com/vidhanio/gizmos-answer-client",
   "author": "Vidhan Bhatt",
   "license": "MIT",
-  "version": "0.0.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
