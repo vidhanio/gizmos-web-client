@@ -1,25 +1,9 @@
-import GizmoItem from "./components/GizmoItem";
-import { useEffect, useState } from "react";
-import { getGizmo, getGizmos, addGizmo, updateGizmo, deleteGizmo } from "./API";
+import GizmoHomePage from "components/gizmo-home-page";
 
-function App() {
-  const [gizmos, setGizmos] = useState<IGizmo[]>([]);
-
-  useEffect(() => {
-    async function handleGetGizmos() {
-      const { data } = await getGizmos();
-      setGizmos(data.gizmos);
-    }
-    handleGetGizmos();
-  }, []);
-
+export default function App(): JSX.Element {
   return (
-    <div className="flex flex-col gap-16 p-16 App">
-      {gizmos.map((gizmo: IGizmo) => (
-        <GizmoItem key={gizmo.resource} gizmo={gizmo} />
-      ))}
-    </div>
+    <>
+      <GizmoHomePage />
+    </>
   );
 }
-
-export default App;

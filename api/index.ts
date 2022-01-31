@@ -1,12 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 
-const baseUrl = "http://localhost:8000";
+const baseUrl = "http://localhost:8000/gizmos";
 
 export async function getGizmos(): Promise<AxiosResponse<GizmosResponse>> {
   try {
-    const gizmos: AxiosResponse<GizmosResponse> = await axios.get(
-      `${baseUrl}/gizmos`
-    );
+    const gizmos: AxiosResponse<GizmosResponse> = await axios.get(`${baseUrl}`);
     return gizmos;
   } catch (error) {
     throw error;
@@ -18,42 +16,43 @@ export async function getGizmo(
 ): Promise<AxiosResponse<GizmoResponse>> {
   try {
     const gizmo: AxiosResponse<GizmoResponse> = await axios.get(
-      `${baseUrl}/gizmo/${resource.toString()}`
+      `${baseUrl}/${resource}`
     );
+    console.log(gizmo);
     return gizmo;
   } catch (error) {
     throw error;
   }
 }
 
-export async function addGizmo(
-  gizmo: IGizmo
+export async function createGizmo(
+  gizmo: Gizmo
 ): Promise<AxiosResponse<GizmoResponse>> {
   try {
-    const addedGizmo = {
+    const createdGizmo = {
       title: gizmo.title,
       materials: gizmo.materials,
       description: gizmo.description,
       resource: gizmo.resource,
       answers: gizmo.answers,
     };
-    const addGizmo: AxiosResponse<GizmoResponse> = await axios.post(
-      `${baseUrl}/add-gizmo`,
-      addedGizmo
+    const createGizmo: AxiosResponse<GizmoResponse> = await axios.post(
+      `${baseUrl}`,
+      gizmo
     );
-    return addGizmo;
+    return createGizmo;
   } catch (error) {
     throw error;
   }
 }
 
-export async function updateGizmo(
+export async function editGizmo(
   resource: number,
-  gizmo: IGizmo
+  gizmo: Gizmo
 ): Promise<AxiosResponse<GizmoResponse>> {
   try {
     const updatedGizmo: AxiosResponse<GizmoResponse> = await axios.put(
-      `${baseUrl}/edit-gizmo/${resource}`,
+      `${baseUrl}/${resource}`,
       gizmo
     );
     return updatedGizmo;
@@ -67,7 +66,7 @@ export async function deleteGizmo(
 ): Promise<AxiosResponse<GizmoResponse>> {
   try {
     const deletedGizmo: AxiosResponse<GizmoResponse> = await axios.delete(
-      `${baseUrl}/delete-gizmo/${resource}`
+      `${baseUrl}/${resource}`
     );
     return deletedGizmo;
   } catch (error) {

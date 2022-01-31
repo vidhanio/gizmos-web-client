@@ -1,11 +1,11 @@
-import { useRouter } from "next/router";
-import GizmoPage from "../components/GizmoPage";
-import { getGizmo, getGizmos } from "../API";
-import { useState, useEffect } from "react";
+import { getGizmo, getGizmos } from "api";
+import { useEffect, useState } from "react";
 
-function Gizmo() {
-  const [gizmo, setGizmo] = useState<IGizmo>({
-    _id: "",
+import GizmoPage from "components/gizmo-page";
+import { useRouter } from "next/router";
+
+export default function Page() {
+  const [gizmo, setGizmo] = useState<Gizmo>({
     title: "",
     materials: "",
     description: "",
@@ -14,7 +14,7 @@ function Gizmo() {
   });
 
   const router = useRouter();
-  const { resource } = router.query;
+  const resource = router.query.resource as string;
 
   useEffect(() => {
     if (resource === undefined) {
@@ -26,7 +26,7 @@ function Gizmo() {
       setGizmo(gizmo);
     }
     async function handleGetGizmo() {
-      const { data } = await getGizmo(Number(resource as string));
+      const { data } = await getGizmo(Number(resource));
       setGizmo(data.gizmo);
     }
     if (resource === "random") {
@@ -38,5 +38,3 @@ function Gizmo() {
 
   return <GizmoPage gizmo={gizmo} />;
 }
-
-export default Gizmo;

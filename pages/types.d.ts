@@ -1,24 +1,21 @@
-interface IGizmo {
-  _id: string;
+type Gizmo = {
   title: string;
   materials: string;
   description: string;
   resource: number;
   answers: string[];
-}
+};
 
 type GizmoProps = {
-  gizmo: IGizmo;
+  gizmo: Gizmo;
 };
 
 type GizmoResponse = {
   message: string;
-  status: string;
-  gizmo: IGizmo;
+  gizmo: Gizmo;
 };
 
 type GizmosResponse = {
   message: string;
-  status: string;
-  gizmos: IGizmo[];
+  gizmos: Gizmo[];
 };
