@@ -12,7 +12,7 @@ export type GizmoProps = {
 
 export type GizmoResponse = {
   message: string;
-  gizmo: Gizmo;
+  gizmo: Gizmo | null;
 };
 
 export type GizmosResponse = {

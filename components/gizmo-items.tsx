@@ -1,3 +1,4 @@
+import { Gizmo } from "components/types";
 import GizmoItem from "./gizmo-item";
 
 export default function GizmoItems({

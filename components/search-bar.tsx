@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { Gizmo } from "components/types";
 import { getGizmos } from "api";
 
 export default function SearchBar({

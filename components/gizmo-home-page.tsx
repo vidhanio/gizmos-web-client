@@ -1,3 +1,4 @@
+import { Gizmo } from "components/types";
 import GizmoItems from "./gizmo-items";
 import SearchBar from "./search-bar";
 import { useState } from "react";

@@ -1,7 +1,8 @@
 import ErrorPage from "next/error";
+import { Gizmo } from "components/types";
 import Image from "next/image";
 
-export default function Gizmo({ gizmo }: { gizmo: Gizmo }): JSX.Element {
+export default function GizmoPage({ gizmo }: { gizmo: Gizmo }): JSX.Element {
   return gizmo ? (
     <div className="flex flex-col gap-8 justify-center items-center p-16 w-screen h-screen">
       <h3 className="text-2xl text-center">{gizmo.title}</h3>

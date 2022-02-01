@@ -1,3 +1,4 @@
+import { Gizmo, GizmoResponse, GizmosResponse } from "components/types";
 import axios, { AxiosResponse } from "axios";
 
 const baseUrl = "http://localhost:8000/gizmos";
