@@ -1,4 +1,4 @@
-type Gizmo = {
+export type Gizmo = {
   title: string;
   materials: string;
   description: string;
@@ -6,16 +6,16 @@ type Gizmo = {
   answers: string[];
 };
 
-type GizmoProps = {
+export type GizmoProps = {
   gizmo: Gizmo;
 };
 
-type GizmoResponse = {
+export type GizmoResponse = {
   message: string;
   gizmo: Gizmo;
 };
 
-type GizmosResponse = {
+export type GizmosResponse = {
   message: string;
   gizmos: Gizmo[];
 };
