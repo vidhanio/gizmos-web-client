@@ -26,7 +26,7 @@ export async function getGizmo(
   }
 }
 
-export async function createGizmo(
+export async function postGizmo(
   gizmo: Gizmo
 ): Promise<AxiosResponse<GizmoResponse>> {
   try {
@@ -47,7 +47,7 @@ export async function createGizmo(
   }
 }
 
-export async function editGizmo(
+export async function putGizmo(
   resource: number,
   gizmo: Gizmo
 ): Promise<AxiosResponse<GizmoResponse>> {
